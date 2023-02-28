@@ -1,7 +1,5 @@
 // ** Icon imports
 import HomeOutline from 'mdi-material-ui/HomeOutline'
-import BookCheck from 'mdi-material-ui/BookCheck'
-import BookAlert from 'mdi-material-ui/BookAlert'
 import BookAccount from 'mdi-material-ui/BookAccount'
 
 // ** Type import

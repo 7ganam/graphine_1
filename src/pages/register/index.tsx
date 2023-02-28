@@ -45,9 +45,6 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 import { useAuth } from 'src/hooks/useAuth'
 import { useSettings } from 'src/@core/hooks/useSettings'
 
-// ** Demo Imports
-import FooterIllustrationsV2 from 'src/views/pages/auth/FooterIllustrationsV2'
-
 const defaultValues = {
   email: '',
   username: '',
@@ -60,25 +57,6 @@ interface FormData {
   username: string
   password: string
 }
-
-// ** Styled Components
-const RegisterIllustrationWrapper = styled(Box)<BoxProps>(({ theme }) => ({
-  padding: theme.spacing(20),
-  paddingRight: '0 !important',
-  [theme.breakpoints.down('lg')]: {
-    padding: theme.spacing(10)
-  }
-}))
-
-const RegisterIllustration = styled('img')(({ theme }) => ({
-  maxWidth: '48rem',
-  [theme.breakpoints.down('xl')]: {
-    maxWidth: '38rem'
-  },
-  [theme.breakpoints.down('lg')]: {
-    maxWidth: '30rem'
-  }
-}))
 
 const RightWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   width: '100%',
