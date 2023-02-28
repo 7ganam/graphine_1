@@ -214,7 +214,12 @@ const Home = () => {
               </Grid>
               <Grid item xs={12} md={4}>
                 <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                  <a href='/images/usersStore/exported.xlsx' download style={{ textDecoration: 'none' }}>
+                  <a
+                    href='/images/usersStore/exported.xlsx'
+                    target='_blank'
+                    download
+                    style={{ textDecoration: 'none' }}
+                  >
                     <Button variant='outlined' size='large'>
                       <Box
                         sx={{
