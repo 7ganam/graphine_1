@@ -159,8 +159,6 @@ const Register = () => {
     })
   }
 
-  const imageSource = skin === 'bordered' ? 'auth-v2-register-illustration-bordered' : 'auth-v2-register-illustration'
-
   return (
     <Box className='content-right'>
       {!hidden ? (
