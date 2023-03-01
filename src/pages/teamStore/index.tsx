@@ -109,24 +109,28 @@ const Home = () => {
                     expandIcon={<Img alt='error-illustration' src='/images/usersStore/i1.png' />}
                     collapseIcon={<Img alt='error-illustration' src='/images/usersStore/i2.png' />}
                     label={
-                      <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ marginTop: '8px' }}>Unapproved Risk Universe Cabinet</div>
+                      <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
+                        <Typography noWrap style={{ marginTop: '8px' }}>
+                          Unapproved Risk Universe Cabinet
+                        </Typography>
                         <div style={{ marginLeft: 'auto' }}>
                           <Checkbox />
                         </div>
-                      </div>
+                      </Box>
                     }
                   >
                     <CustomTreeItem
                       nodeId='2'
                       icon={<Img alt='error-illustration' src='/images/usersStore/i3.png' />}
                       label={
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                          <div style={{ marginTop: '8px' }}>Vendor invoices are not properly accounted for</div>
+                        <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
+                          <Typography noWrap style={{ marginTop: '8px' }}>
+                            Vendor invoices are not properly accounted for
+                          </Typography>
                           <div style={{ marginLeft: 'auto' }}>
                             <Checkbox />
                           </div>
-                        </div>
+                        </Box>
                       }
                     />
                   </CustomTreeItem>
@@ -135,12 +139,14 @@ const Home = () => {
                     expandIcon={<Img alt='error-illustration' src='/images/usersStore/i1.png' />}
                     collapseIcon={<Img alt='error-illustration' src='/images/usersStore/i2.png' />}
                     label={
-                      <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ marginTop: '8px' }}>Risk and Control Library</div>
+                      <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
+                        <Typography noWrap style={{ marginTop: '8px' }}>
+                          Risk and Control Library
+                        </Typography>
                         <div style={{ marginLeft: 'auto' }}>
                           <Checkbox />
                         </div>
-                      </div>
+                      </Box>
                     }
                   >
                     <CustomTreeItem
@@ -148,26 +154,28 @@ const Home = () => {
                       expandIcon={<Img alt='error-illustration' src='/images/usersStore/i1.png' />}
                       collapseIcon={<Img alt='error-illustration' src='/images/usersStore/i2.png' />}
                       label={
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                          <div style={{ marginTop: '8px' }}>Finance</div>
+                        <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
+                          <Typography noWrap style={{ marginTop: '8px' }}>
+                            Finance
+                          </Typography>
                           <div style={{ marginLeft: 'auto' }}>
                             <Checkbox />
                           </div>
-                        </div>
+                        </Box>
                       }
                     >
                       <CustomTreeItem
                         nodeId='5'
                         icon={<Img alt='error-illustration' src='/images/usersStore/i3.png' />}
                         label={
-                          <div style={{ display: 'flex', flexDirection: 'row' }}>
-                            <div style={{ marginTop: '8px' }}>
+                          <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
+                            <Typography noWrap style={{ marginTop: '8px' }}>
                               Notes to financial statements may not be properly stated.
-                            </div>
+                            </Typography>
                             <div style={{ marginLeft: 'auto' }}>
                               <Checkbox />
                             </div>
-                          </div>
+                          </Box>
                         }
                       />
                     </CustomTreeItem>
@@ -176,36 +184,42 @@ const Home = () => {
                       expandIcon={<Img alt='error-illustration' src='/images/usersStore/i1.png' />}
                       collapseIcon={<Img alt='error-illustration' src='/images/usersStore/i2.png' />}
                       label={
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                          <div style={{ marginTop: '8px' }}>Human Resources</div>
+                        <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
+                          <Typography noWrap style={{ marginTop: '8px' }}>
+                            Human Resources
+                          </Typography>
                           <div style={{ marginLeft: 'auto' }}>
                             <Checkbox />
                           </div>
-                        </div>
+                        </Box>
                       }
                     >
                       <CustomTreeItem
                         nodeId='7'
                         icon={<Img alt='error-illustration' src='/images/usersStore/i3.png' />}
                         label={
-                          <div style={{ display: 'flex', flexDirection: 'row' }}>
-                            <div style={{ marginTop: '8px' }}>Loss, Alteration, or unauthorized disclosure of data</div>
+                          <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
+                            <Typography noWrap style={{ marginTop: '8px' }}>
+                              Loss, Alteration, or unauthorized disclosure of data
+                            </Typography>
                             <div style={{ marginLeft: 'auto' }}>
                               <Checkbox />
                             </div>
-                          </div>
+                          </Box>
                         }
                       />
                       <CustomTreeItem
                         nodeId='8'
                         icon={<Img alt='error-illustration' src='/images/usersStore/i3.png' />}
                         label={
-                          <div style={{ display: 'flex', flexDirection: 'row' }}>
-                            <div style={{ marginTop: '8px' }}>Performing poorly</div>
+                          <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
+                            <Typography noWrap style={{ marginTop: '8px' }}>
+                              Performing poorly
+                            </Typography>
                             <div style={{ marginLeft: 'auto' }}>
                               <Checkbox />
                             </div>
-                          </div>
+                          </Box>
                         }
                       />
                     </CustomTreeItem>
