@@ -6,21 +6,21 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import TreeView from '@mui/lab/TreeView'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+
 import { styled } from '@mui/material/styles'
-import Checkbox from '@mui/material/Checkbox'
-import TreeItem, { TreeItemProps, useTreeItem, TreeItemContentProps } from '@mui/lab/TreeItem'
+
 import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import Select, { SelectChangeEvent } from '@mui/material/Select'
 
-import clsx from 'clsx'
-import { Box } from '@mui/material'
+// ** Custom Components
+import DropTree from 'src/components/DropTree'
 
-// ** Styled Components
-const TreeViewStyled = styled(TreeView)(() => ({
-  '& 	.MuiTreeItem-content': {}
-}))
+// ** Types import
+import { ITree } from 'src/types/appTypes'
 
 const Img = styled('img')(() => ({
   width: '40px',
@@ -28,59 +28,339 @@ const Img = styled('img')(() => ({
   marginLeft: '18px'
 }))
 
-const CustomContent = React.forwardRef(function CustomContent(props: TreeItemContentProps, ref) {
-  const { classes, className, label, nodeId, icon: iconProp, expansionIcon, displayIcon } = props
-
-  const { disabled, expanded, selected, focused, handleExpansion, handleSelection, preventSelection } =
-    useTreeItem(nodeId)
-
-  const icon = iconProp || expansionIcon || displayIcon
-
-  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    preventSelection(event)
+// ** Data
+const issuesData: ITree[] = [
+  {
+    title: 'General Cabinet',
+    id: '1',
+    children: [
+      {
+        title: 'Finance',
+        id: '6',
+        children: [{ title: 'Improper Segregation of Duties', id: '333' }]
+      }
+    ]
+  },
+  {
+    title: 'Other Audit Programs',
+    id: '2',
+    children: [
+      {
+        title: 'Polish Audit',
+        id: '3',
+        children: [
+          {
+            title: 'Brak właściwego rozdziału obowiązków',
+            id: '7'
+          },
+          {
+            title: 'Brak formalnego przeglądu uprawnień użytkowników w SAP',
+            id: '67'
+          }
+        ]
+      }
+    ]
   }
-
-  const handleExpansionClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    handleExpansion(event)
+]
+const objectivesData: ITree[] = [
+  {
+    title: 'Risk and Control Library',
+    id: '1',
+    children: [
+      {
+        title: 'General',
+        id: '6',
+        children: [
+          {
+            title: 'To perform an annual strategic-level risk assessment.',
+            id: '66'
+          }
+        ]
+      },
+      {
+        title: 'Accounting',
+        id: '444',
+        children: [
+          {
+            title: 'Assets.',
+            id: '1341',
+            children: [
+              {
+                title: 'To ensure accurate and reliable financial reporting.',
+                id: '133'
+              }
+            ]
+          },
+          {
+            title: 'Inventory management.',
+            id: '13481',
+            children: [
+              {
+                title: 'Ensure accurate inventory records are maintained.',
+                id: '13333'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: 'Social Media',
+    id: '2',
+    children: [
+      {
+        title: 'Ensure information and communication is consistently presented to stakeholders',
+        id: '3'
+      },
+      {
+        title: 'Ensure infomation is shared among approrpriate members of the organization',
+        id: '4'
+      },
+      {
+        title: 'Ensure there is awareness of social media within management groups',
+        id: '224'
+      }
+    ]
   }
-
-  const handleSelectionClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    handleSelection(event)
+]
+const strategicRisksData: ITree[] = [
+  {
+    title: 'title',
+    id: '1',
+    children: [
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      }
+    ]
+  },
+  {
+    title: 'title2',
+    id: '2',
+    children: [
+      {
+        title: 'title3',
+        id: '3',
+        children: [
+          {
+            title: 'title5',
+            id: '7'
+          }
+        ]
+      },
+      {
+        title: 'title4',
+        id: '4',
+        children: [
+          {
+            title: 'title5',
+            id: '5'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: 'title11',
+    id: '11',
+    children: [
+      {
+        title: 'title22',
+        id: '22',
+        children: [
+          {
+            title: 'title33',
+            id: '33'
+          }
+        ]
+      },
+      {
+        title: 'title44',
+        id: '44',
+        children: [
+          {
+            title: 'title55',
+            id: '55'
+          }
+        ]
+      }
+    ]
   }
-
-  return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div
-      className={clsx(className, classes.root, {
-        [classes.expanded]: expanded,
-        [classes.selected]: selected,
-        [classes.focused]: focused,
-        [classes.disabled]: disabled
-      })}
-      onMouseDown={handleMouseDown}
-      ref={ref as React.Ref<HTMLDivElement>}
-      style={{ display: 'flex', flexDirection: 'row', border: '1px solid grey', height: '40px', borderRadius: '50px' }}
-    >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <div onClick={handleExpansionClick} className={classes.iconContainer}>
-        {icon}
-        {/* {expanded ? <FolderAccount /> : <FolderAccount />} */}
-        {/* <Img alt='error-illustration' src='/images/usersStore/i1.png' /> */}
-      </div>
-      <div style={{ marginLeft: '20px', display: 'flex', width: '100%' }}>
-        <Typography onClick={handleSelectionClick} component='div' className={classes.label}>
-          {label}
-        </Typography>
-      </div>
-    </div>
-  )
-})
-
-function CustomTreeItem(props: TreeItemProps) {
-  return <TreeItem ContentComponent={CustomContent} {...props} />
-}
-
+]
+const risksData: ITree[] = [
+  {
+    title: 'title',
+    id: '1',
+    children: [
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      }
+    ]
+  }
+]
+const controlData: ITree[] = [
+  {
+    title: 'title',
+    id: '1',
+    children: [
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      },
+      {
+        title: 'title3',
+        id: '6'
+      }
+    ]
+  },
+  {
+    title: 'title2',
+    id: '2',
+    children: [
+      {
+        title: 'title3',
+        id: '3',
+        children: [
+          {
+            title: 'title5',
+            id: '7'
+          }
+        ]
+      },
+      {
+        title: 'title4',
+        id: '4',
+        children: [
+          {
+            title: 'title5',
+            id: '5'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: 'title11',
+    id: '11',
+    children: [
+      {
+        title: 'title22',
+        id: '22',
+        children: [
+          {
+            title: 'title33',
+            id: '33'
+          }
+        ]
+      },
+      {
+        title: 'title44',
+        id: '44',
+        children: [
+          {
+            title: 'title55',
+            id: '55'
+          }
+        ]
+      }
+    ]
+  }
+]
+const testData: ITree[] = [
+  {
+    title: 'title2',
+    id: '2',
+    children: [
+      {
+        title: 'title3',
+        id: '3',
+        children: [
+          {
+            title: 'title5',
+            id: '7'
+          }
+        ]
+      },
+      {
+        title: 'title4',
+        id: '4',
+        children: [
+          {
+            title: 'title5',
+            id: '5'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: 'title11',
+    id: '11',
+    children: [
+      {
+        title: 'title22',
+        id: '22',
+        children: [
+          {
+            title: 'title33',
+            id: '33'
+          }
+        ]
+      },
+      {
+        title: 'title44',
+        id: '44',
+        children: [
+          {
+            title: 'title55',
+            id: '55'
+          }
+        ]
+      }
+    ]
+  }
+]
 const Home = () => {
+  const [type, setType] = React.useState('issue')
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setType(event.target.value as string)
+  }
+
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
@@ -89,6 +369,83 @@ const Home = () => {
           <CardContent>
             <Typography sx={{ mb: 2 }}>Select Items to be exported</Typography>
             <Typography>Items are exported in excel format</Typography>
+            <Box sx={{ width: '220px', mt: '30px', marginLeft: 'auto' }}>
+              <FormControl fullWidth>
+                <InputLabel id='demo-simple-select-label'>type</InputLabel>
+                <Select
+                  labelId='demo-simple-select-label'
+                  id='demo-simple-select'
+                  value={type}
+                  label='Age'
+                  onChange={handleChange}
+                >
+                  <MenuItem value={'issue'}>
+                    <Box sx={{ display: 'flex' }}>
+                      <img
+                        alt='error-illustration'
+                        src='/images/usersStore/issue.png'
+                        style={{ width: '20px', marginRight: '10px' }}
+                      />
+                      <Box> Issue</Box>
+                    </Box>
+                  </MenuItem>
+                  <MenuItem value={'objective'}>
+                    {' '}
+                    <Box sx={{ display: 'flex' }}>
+                      <img
+                        alt='error-illustration'
+                        src='/images/usersStore/objective.png'
+                        style={{ width: '20px', marginRight: '10px' }}
+                      />
+                      <Box> objective</Box>
+                    </Box>
+                  </MenuItem>
+                  <MenuItem value={'strategic_risk'}>
+                    {' '}
+                    <Box sx={{ display: 'flex' }}>
+                      <img
+                        alt='error-illustration'
+                        src='/images/usersStore/strategicRisk.png'
+                        style={{ width: '20px', marginRight: '10px' }}
+                      />
+                      <Box> Strategic Risk</Box>
+                    </Box>
+                  </MenuItem>
+                  <MenuItem value={'risk'}>
+                    {' '}
+                    <Box sx={{ display: 'flex' }}>
+                      <img
+                        alt='error-illustration'
+                        src='/images/usersStore/risk.png'
+                        style={{ width: '20px', marginRight: '10px' }}
+                      />
+                      <Box> Risk</Box>
+                    </Box>
+                  </MenuItem>
+                  <MenuItem value={'control'}>
+                    {' '}
+                    <Box sx={{ display: 'flex' }}>
+                      <img
+                        alt='error-illustration'
+                        src='/images/usersStore/control.png'
+                        style={{ width: '20px', marginRight: '10px' }}
+                      />
+                      <Box> Control</Box>
+                    </Box>
+                  </MenuItem>
+                  <MenuItem value={'test'}>
+                    <Box sx={{ display: 'flex' }}>
+                      <img
+                        alt='error-illustration'
+                        src='/images/usersStore/test.png'
+                        style={{ width: '20px', marginRight: '10px' }}
+                      />
+                      <Box> Test</Box>
+                    </Box>
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
           </CardContent>
         </Card>
       </Grid>
@@ -98,133 +455,36 @@ const Home = () => {
           <CardContent>
             <Grid container spacing={6}>
               <Grid item xs={12} md={8}>
-                <TreeViewStyled
-                  aria-label='file system navigator'
-                  defaultCollapseIcon={<ExpandMoreIcon />}
-                  defaultExpandIcon={<ChevronRightIcon />}
-                  sx={{ flexGrow: 1 }}
-                >
-                  <CustomTreeItem
-                    nodeId='1'
-                    expandIcon={<Img alt='error-illustration' src='/images/usersStore/i1.png' />}
-                    collapseIcon={<Img alt='error-illustration' src='/images/usersStore/i2.png' />}
-                    label={
-                      <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
-                        <Typography noWrap style={{ marginTop: '8px' }}>
-                          Unapproved Risk Universe Cabinet
-                        </Typography>
-                        <div style={{ marginLeft: 'auto' }}>
-                          <Checkbox />
-                        </div>
-                      </Box>
-                    }
-                  >
-                    <CustomTreeItem
-                      nodeId='2'
-                      icon={<Img alt='error-illustration' src='/images/usersStore/i3.png' />}
-                      label={
-                        <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
-                          <Typography noWrap style={{ marginTop: '8px' }}>
-                            Vendor invoices are not properly accounted for
-                          </Typography>
-                          <div style={{ marginLeft: 'auto' }}>
-                            <Checkbox />
-                          </div>
-                        </Box>
-                      }
-                    />
-                  </CustomTreeItem>
-                  <CustomTreeItem
-                    nodeId='3'
-                    expandIcon={<Img alt='error-illustration' src='/images/usersStore/i1.png' />}
-                    collapseIcon={<Img alt='error-illustration' src='/images/usersStore/i2.png' />}
-                    label={
-                      <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
-                        <Typography noWrap style={{ marginTop: '8px' }}>
-                          Risk and Control Library
-                        </Typography>
-                        <div style={{ marginLeft: 'auto' }}>
-                          <Checkbox />
-                        </div>
-                      </Box>
-                    }
-                  >
-                    <CustomTreeItem
-                      nodeId='4'
-                      expandIcon={<Img alt='error-illustration' src='/images/usersStore/i1.png' />}
-                      collapseIcon={<Img alt='error-illustration' src='/images/usersStore/i2.png' />}
-                      label={
-                        <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
-                          <Typography noWrap style={{ marginTop: '8px' }}>
-                            Finance
-                          </Typography>
-                          <div style={{ marginLeft: 'auto' }}>
-                            <Checkbox />
-                          </div>
-                        </Box>
-                      }
-                    >
-                      <CustomTreeItem
-                        nodeId='5'
-                        icon={<Img alt='error-illustration' src='/images/usersStore/i3.png' />}
-                        label={
-                          <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
-                            <Typography noWrap style={{ marginTop: '8px' }}>
-                              Notes to financial statements may not be properly stated.
-                            </Typography>
-                            <div style={{ marginLeft: 'auto' }}>
-                              <Checkbox />
-                            </div>
-                          </Box>
-                        }
-                      />
-                    </CustomTreeItem>
-                    <CustomTreeItem
-                      nodeId='6'
-                      expandIcon={<Img alt='error-illustration' src='/images/usersStore/i1.png' />}
-                      collapseIcon={<Img alt='error-illustration' src='/images/usersStore/i2.png' />}
-                      label={
-                        <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
-                          <Typography noWrap style={{ marginTop: '8px' }}>
-                            Human Resources
-                          </Typography>
-                          <div style={{ marginLeft: 'auto' }}>
-                            <Checkbox />
-                          </div>
-                        </Box>
-                      }
-                    >
-                      <CustomTreeItem
-                        nodeId='7'
-                        icon={<Img alt='error-illustration' src='/images/usersStore/i3.png' />}
-                        label={
-                          <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
-                            <Typography noWrap style={{ marginTop: '8px' }}>
-                              Loss, Alteration, or unauthorized disclosure of data
-                            </Typography>
-                            <div style={{ marginLeft: 'auto' }}>
-                              <Checkbox />
-                            </div>
-                          </Box>
-                        }
-                      />
-                      <CustomTreeItem
-                        nodeId='8'
-                        icon={<Img alt='error-illustration' src='/images/usersStore/i3.png' />}
-                        label={
-                          <Box sx={{ display: 'flex', flexDirection: 'row', width: { xs: '90%', md: '100%' } }}>
-                            <Typography noWrap style={{ marginTop: '8px' }}>
-                              Performing poorly
-                            </Typography>
-                            <div style={{ marginLeft: 'auto' }}>
-                              <Checkbox />
-                            </div>
-                          </Box>
-                        }
-                      />
-                    </CustomTreeItem>
-                  </CustomTreeItem>
-                </TreeViewStyled>
+                {type === 'issue' && (
+                  <DropTree
+                    data={issuesData}
+                    img={<Img alt='error-illustration' src='/images/usersStore/issue.png' />}
+                  />
+                )}
+                {type === 'objective' && (
+                  <DropTree
+                    data={objectivesData}
+                    img={<Img alt='error-illustration' src='/images/usersStore/objective.png' />}
+                  />
+                )}
+                {type === 'strategic_risk' && (
+                  <DropTree
+                    data={strategicRisksData}
+                    img={<Img alt='error-illustration' src='/images/usersStore/strategicRisk.png' />}
+                  />
+                )}
+                {type === 'risk' && (
+                  <DropTree data={risksData} img={<Img alt='error-illustration' src='/images/usersStore/risk.png' />} />
+                )}
+                {type === 'control' && (
+                  <DropTree
+                    data={controlData}
+                    img={<Img alt='error-illustration' src='/images/usersStore/control.png' />}
+                  />
+                )}
+                {type === 'test' && (
+                  <DropTree data={testData} img={<Img alt='error-illustration' src='/images/usersStore/test.png' />} />
+                )}
               </Grid>
               <Grid item xs={12} md={4}>
                 <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>

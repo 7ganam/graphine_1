@@ -14,7 +14,7 @@ const users: UserDataType[] = [
     password: 'admin',
     fullName: 'John Doe',
     username: 'johndoe',
-    email: 'admin@graphine.com'
+    email: 'admin@grafene.com'
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const users: UserDataType[] = [
     password: 'client',
     fullName: 'Jane Doe',
     username: 'janedoe',
-    email: 'client@graphine.com'
+    email: 'client@grafene.com'
   }
 ]
 
