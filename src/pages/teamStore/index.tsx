@@ -126,99 +126,118 @@ const objectivesData: ITree[] = [
 ]
 const strategicRisksData: ITree[] = [
   {
-    title: 'title',
+    title: 'Unapproved Risk Universe Cabinet',
     id: '1',
     children: [
       {
-        title: 'title3',
-        id: '6'
+        title: '2022 Audit Risk Assessment',
+        id: '61',
+        children: [
+          {
+            title: 'Italy Human Resources Risk',
+            id: '62'
+          },
+          {
+            title: 'WKFS UK Procurement Risk',
+            id: '63'
+          }
+        ]
       },
+
       {
-        title: 'title3',
-        id: '6'
-      },
-      {
-        title: 'title3',
-        id: '6'
-      },
-      {
-        title: 'title3',
-        id: '6'
+        title: '2023 SOX Compliance Assessment',
+        id: '64',
+        children: [
+          {
+            title: 'R2R.BSR.R01 BS accounts key factors are not fully determined or understood',
+            id: '65'
+          },
+          {
+            title: 'R2R.BSR.R02 Balances posted in the GL system are incomplete or inaccurate',
+            id: '66'
+          },
+          {
+            title: 'R2R.BSR.R02.02 Reconciliation of BS Accounts',
+            id: '67'
+          }
+        ]
       }
     ]
   },
   {
-    title: 'title2',
+    title: 'Risk Factors',
     id: '2',
     children: [
       {
-        title: 'title3',
-        id: '3',
-        children: [
-          {
-            title: 'title5',
-            id: '7'
-          }
-        ]
+        title: 'Financial Risk',
+        id: '3'
       },
       {
-        title: 'title4',
-        id: '4',
-        children: [
-          {
-            title: 'title5',
-            id: '5'
-          }
-        ]
+        title: 'Operational Risk',
+        id: '4'
+      },
+      {
+        title: 'Strategic Risk',
+        id: '51'
+      },
+      {
+        title: 'IT Risk',
+        id: '41'
+      },
+      {
+        title: 'Compliance Risk',
+        id: '42'
       }
     ]
   },
   {
-    title: 'title11',
+    title: 'Risk and Control Library',
     id: '11',
     children: [
       {
-        title: 'title22',
+        title: 'Financial Risk',
         id: '22',
         children: [
           {
-            title: 'title33',
+            title: 'Access to Capital and Liquidity ',
             id: '33'
           }
         ]
       },
       {
-        title: 'title44',
-        id: '44',
-        children: [
-          {
-            title: 'title55',
-            id: '55'
-          }
-        ]
+        title: 'Exchange Rate',
+        id: '44'
+      },
+      {
+        title: 'Residual Value Risk',
+        id: '342'
+      },
+      {
+        title: 'Operational Risk',
+        id: '51'
       }
     ]
   }
 ]
 const risksData: ITree[] = [
   {
-    title: 'title',
+    title: 'Cyber Security',
     id: '1',
     children: [
       {
-        title: 'title3',
+        title: 'Information Systems Acquisition, Development and Maintenance',
         id: '6'
       },
       {
-        title: 'title3',
+        title: 'Mitigated Targeted Intrusions',
         id: '6'
       },
       {
-        title: 'title3',
+        title: 'Mitigated Targeted Intrusions',
         id: '6'
       },
       {
-        title: 'title3',
+        title: 'Asset Management',
         id: '6'
       }
     ]
@@ -226,73 +245,79 @@ const risksData: ITree[] = [
 ]
 const controlData: ITree[] = [
   {
-    title: 'title',
+    title: 'Risk and Control Library',
     id: '1',
     children: [
       {
-        title: 'title3',
+        title: 'Finance',
         id: '6'
       },
       {
-        title: 'title3',
-        id: '6'
+        title: 'Human Resources',
+        id: '61'
       },
       {
-        title: 'title3',
-        id: '6'
+        title: 'Information Technology',
+        id: '62'
       },
       {
-        title: 'title3',
-        id: '6'
+        title: 'Legal',
+        id: '64'
       }
     ]
   },
   {
-    title: 'title2',
+    title: 'Social Media',
     id: '2',
     children: [
       {
-        title: 'title3',
+        title: 'Controls',
         id: '3',
         children: [
           {
-            title: 'title5',
+            title: 'Social Media committee is formed',
             id: '7'
-          }
-        ]
-      },
-      {
-        title: 'title4',
-        id: '4',
-        children: [
+          },
           {
-            title: 'title5',
-            id: '5'
+            title: 'Social Media committee is monitored',
+            id: '71'
+          },
+          {
+            title: 'Information is shared with management',
+            id: '72'
+          },
+          {
+            title: 'Messaging is planned and monitored',
+            id: '723'
           }
         ]
       }
     ]
   },
   {
-    title: 'title11',
+    title: 'Cyber Security',
     id: '11',
     children: [
       {
-        title: 'title22',
+        title: 'Security Policy',
         id: '22',
         children: [
           {
-            title: 'title33',
+            title: 'Information security policy document ',
             id: '33'
+          },
+          {
+            title: 'Review of the information security policy',
+            id: '331'
           }
         ]
       },
       {
-        title: 'title44',
+        title: 'Asset Management',
         id: '44',
         children: [
           {
-            title: 'title55',
+            title: 'Classification guidelines',
             id: '55'
           }
         ]
@@ -302,52 +327,26 @@ const controlData: ITree[] = [
 ]
 const testData: ITree[] = [
   {
-    title: 'title2',
+    title: 'Unapproved Cabinet',
     id: '2',
     children: [
       {
-        title: 'title3',
+        title: 'Cyber Security Policy',
         id: '3',
         children: [
           {
-            title: 'title5',
+            title: 'Information security policy test',
             id: '7'
           }
         ]
       },
       {
-        title: 'title4',
+        title: 'Organization of Information Security',
         id: '4',
         children: [
           {
-            title: 'title5',
+            title: 'Management commitment to information security test',
             id: '5'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: 'title11',
-    id: '11',
-    children: [
-      {
-        title: 'title22',
-        id: '22',
-        children: [
-          {
-            title: 'title33',
-            id: '33'
-          }
-        ]
-      },
-      {
-        title: 'title44',
-        id: '44',
-        children: [
-          {
-            title: 'title55',
-            id: '55'
           }
         ]
       }
